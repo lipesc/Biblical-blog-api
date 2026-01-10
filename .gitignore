@@ -1,0 +1,82 @@
+# Compiled class files
+*.class
+*.jar
+*.war
+*.ear
+target/
+build/
+
+# IDE
+.idea/
+*. iml
+*.iws
+*.ipr
+.vscode/
+.settings/
+.classpath
+.project
+.factorypath
+*.swp
+*.swo
+*~
+
+# Maven
+. mvn/
+! . mvn/wrapper/maven-wrapper.jar
+mvnw
+mvnw.cmd
+
+# Gradle
+.gradle/
+gradle/
+gradlew
+gradlew.bat
+
+# Application logs
+*.log
+logs/
+spring. log
+
+# OS Files
+.DS_Store
+Thumbs.db
+*. pid
+
+
+application-localprod.yml
+. env
+.env.local
+. env.production
+*. key
+*.pem
+*.p12
+*.jks
+
+docker-compose.yaml
+
+docker-compose.yml
+compose.yml
+docker-compose.override.yml
+. dockerignore
+
+# Database
+*. db
+*.sqlite
+*.sqlite3
+
+# Temporary files
+tmp/
+temp/
+*.tmp
+*.bak
+*.swp
+
+# Test coverage
+.coverage
+htmlcov/
+coverage/
+
+
+node_modules/
+npm-debug.log
+yarn-error.log
