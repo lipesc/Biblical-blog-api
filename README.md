@@ -1,3 +1,4 @@
+em progresso
 # Biblical-blog-api
 estudos sobre uma aplicação enterprise 
 usando um blog de posts biblicos como base.  
