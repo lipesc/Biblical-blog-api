@@ -52,4 +52,102 @@ public class User {
 
 		@OneToMany(mappedBy = "user",  cascade = CascadeType.ALL, orphanRemoval = true)
 		private Set<Comment> comments = new HashSet<>();
+
+
+		protected User () {}
+
+		private User(Builder builder) {
+				this.keycloakId = builder.keycloakId;
+				this.userName = builder.userName;
+				this.email = builder.email;
+				this.fullName = builder.fullName;
+				this.bio = builder.bio;
+				this.profilePicUrl = builder.profilePicUrl;
+				this.active = builder.active;
+				this.emailVerified = builder.emailVerified;
+								
+		}
+
+		public UUID id() {
+				return id;
+		}
+
+		public String userName() {
+				return userName;
+		}
+
+		public String email() {
+				return email;
+		}
+		public String fullName() {
+				return fullName;
+		}
+		public String bio() {
+				return bio;
+		}
+		public String profilePicUrl() {
+				return profilePicUrl;
+		}
+		public Boolean active() {
+				return active;
+		}
+		public LocalDateTime createdAt() {
+				return createdAt;
+		}
+		public int getPostCount() {
+				return posts != null ? posts.size() : 0;
+		}
+		
+
+		
+		public static Builder builder() {
+				return new Builder();
+		}
+
+		public static class Builder {
+				private String keycloakId;
+				private String userName;
+				private String email;
+				private String fullName;
+				private String bio;
+				private String profilePicUrl;
+				private Boolean active = true;
+				private Boolean emailVerified = true;
+
+				public Builder keycloakId(String keycloakId){
+						this.keycloakId = keycloakId;
+						return this;
+				}
+
+				public Builder userName(String userName) {
+						this.userName = userName;
+						return this;
+				}
+
+				public Builder email(String email) {
+						this.email = email;
+						return this;
+				}
+
+				public Builder fullName(String fullName) {
+						this.fullName = fullName;
+						return this;
+				}
+
+				public Builder bio(String bio) {
+						this.bio = bio;
+						return this;
+				}
+
+				public Builder profilePicUrl(String profilePicUrl)
+				{
+						this.profilePicUrl = profilePicUrl;
+						return this;
+				}
+
+				public User builder() {
+						return new User(this);
+				}
+		}
 }
+
