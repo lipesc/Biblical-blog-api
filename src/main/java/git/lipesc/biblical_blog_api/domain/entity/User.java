@@ -106,7 +106,6 @@ public class User {
 				private String bio;
 				private String profilePicUrl;
 				private Boolean active = true;
-				private Boolean emailVerified = true;
 
 				public Builder keycloakId(String keycloakId){
 
