@@ -37,11 +37,7 @@ public class User {
 		@Column(nullable = false)
 		private Boolean active = true;
 
-		@Column(nullable = false)
-		private Boolean emailVerified = false;
-
 		@CreationTimestamp
-		@Column(nullable = false, updatable = false)
 		private LocalDateTime createdAt;
 
 		@UpdateTimestamp
@@ -64,9 +60,7 @@ public class User {
 				this.bio = builder.bio;
 				this.profilePicUrl = builder.profilePicUrl;
 				this.active = builder.active;
-				this.emailVerified = builder.emailVerified;
-								
-		}
+			}
 
 		public UUID id() {
 				return id;
@@ -115,7 +109,7 @@ public class User {
 				private Boolean emailVerified = true;
 
 				public Builder keycloakId(String keycloakId){
-						this.keycloakId = keycloakId;
+
 						return this;
 				}
 

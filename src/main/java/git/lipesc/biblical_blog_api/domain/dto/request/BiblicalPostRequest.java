@@ -36,4 +36,5 @@ public record BiblicalPostRequest(
     UUID categoryId,
 
     @Size(max = 10, message = "Tags não pode ter mais de 10 itens")
+    Set<String> tags
 ) {}
