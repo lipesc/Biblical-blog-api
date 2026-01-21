@@ -1,9 +1,12 @@
 package git.lipesc.biblical_blog_api.config;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -63,7 +66,14 @@ public class SecurityConfig {
         JwtAuthenticationConverter converter = new JwtAuthenticationConverter();
         converter.setJwtGrantedAuthoritiesConverter(jwt -> {
             Map<String, Object> realmAccess = jwt.getClaim("realm_access");
-            Collection<String> roles = (Collection<String>) realmAccess.get("roles");
+            Object rolesObj = realmAccess != null ? realmAccess.get("roles") : "*** realmAccess not found ***";
+            List<String> roles = Collections.emptyList();
+            if (rolesObj instanceof Collection<?> anyRoles) {
+                roles = anyRoles.stream()
+                        .filter(String.class::isInstance)
+                        .map(String.class::cast)
+                        .collect(Collectors.toList());
+            }
             
             return roles.stream()
                 .map(role -> new SimpleGrantedAuthority("ROLE_" + role. toUpperCase()))
